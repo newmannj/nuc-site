@@ -1,0 +1,15 @@
+.timebar-container {
+    min-width: 100%;
+    min-height: 20px;
+    border: solid 1px black;
+}
+
+.occupied {
+    background-color: red;
+    float: left;
+}
+
+.vacant {
+    background-color: whitesmoke;
+    float: left;
+}
