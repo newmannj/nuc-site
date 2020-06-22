@@ -13,6 +13,7 @@ function getMinutesFromTimeString(timeString) {
 
 export function RoomCard(props) {
     const roomData = props.roomData;
+    const isHidden = props.isHidden;
     const startTime = '08:30'; //Not sure on best format to keep this.
     const duration = 180; //Duration of time bar in minutes.
     const startMinutes = getMinutesFromTimeString(startTime);
@@ -60,13 +61,16 @@ export function RoomCard(props) {
             })
         }
     })
-
-    return (
-        <div className="room-card-container">
-            <span>{roomData.building}&nbsp;{roomData.room}</span>
-            <RoomTimeBar
-                diffList={diffList}
-            />
-        </div>
-    )
+    if(!isHidden) {
+        return (
+            <div className="room-card-container">
+                <span>{roomData.building}&nbsp;{roomData.room}</span>
+                <RoomTimeBar
+                    diffList={diffList}
+                />
+            </div>
+        )
+    } else {
+        return null;
+    }
 }

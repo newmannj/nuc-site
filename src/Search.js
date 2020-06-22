@@ -22,14 +22,19 @@ export class Search extends React.Component {
     render() {
         return(
             <div className="search-container">
+            <div className="search-button-container">
+                <ion-icon
+                    id="search-btn" 
+                    name="search"></ion-icon>
+            </div>
+            <div className="search-input-container">
                 <input 
                     id="search" 
                     placeholder="Search for a building nearby"
                     onChange={this.handleChange}
                     onKeyDown={this.handleKeyDown}
                     />
-                <button 
-                    onClick={this.onSearch}>Get a room!</button>
+            </div>
             </div>
         )
     }

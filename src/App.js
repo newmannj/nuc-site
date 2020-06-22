@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { Search } from './Search.js';
 import { RoomList } from './RoomList.js';
+import NeuLogo from './assets/neu-logo.png'
+
 
 class App extends React.Component {
     constructor(props) {
@@ -9,6 +11,7 @@ class App extends React.Component {
         this.state = {
             currentRooms: {},
             isLoaded: false,
+            numToDisplay: 0
         }
     }
 
@@ -20,27 +23,56 @@ class App extends React.Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    currentRooms: result
+                    currentRooms: result,
+                    numToDisplay: 10,
                 })
             }
         )
+        window.addEventListener('scroll', this.handleScroll)
     }
 
-    fetchRooms(building) {
-        console.log("Doing search for:" + building);
+    handleScroll = () => {
+        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            this.setState({
+                numToDisplay: this.state.numToDisplay + 10,
+            })
+        }
+    }
+
+    fetchRooms = (building) => {
+        fetch("http://localhost:8000/api/building?day=1&building="+building)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                this.setState({ 
+                    isLoaded: true, 
+                    currentRooms: result, 
+                    numToDisplay: 10 
+                })
+            }
+        );
     }
 
     render() {
         return (
+            <div>
+            <div className="nuc-header">
+                <img
+                    src={NeuLogo}
+                    className="school-logo"
+                    alt="Northeastern Logo"></img>
+                <h1>Study Space</h1>
+            </div>
             <div className="nuc-container">
-                <h1>Study Space @NU</h1>
                 <Search 
                     onSearch={this.fetchRooms}
                 />
                 <RoomList
                     rooms={this.state.currentRooms}
                     isLoaded={this.state.isLoaded}
+                    numToDisplay={this.state.numToDisplay}
                 />
+            </div>
             </div>
         );
     }

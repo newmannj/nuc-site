@@ -2,3 +2,30 @@
     width: 60%;
     margin: auto;
 }
+
+h1 {
+    color: #C21626;
+    font-style: bold;
+    font-family: "Arial";
+    text-align: center;
+  }
+
+.school-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5%;
+    padding-top: 25px;
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .school-logo {
+      width: 10%;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .school-logo {
+      width: 12%;
+    }
+  }

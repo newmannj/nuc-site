@@ -5,12 +5,17 @@ import './RoomList.css';
 export function RoomList(props) {
     const rooms = props.rooms;
     const isLoaded = props.isLoaded;
-    const roomElements = Object.keys(rooms).map((name) =>
-        <RoomCard 
-            key={name}
-            roomData={rooms[name]}
-        />
-    );
+    const numToDisplay = props.numToDisplay;
+    const roomElements = Object.keys(rooms).map((name, index) => {
+        let isHidden = index > numToDisplay;
+        return(
+            <RoomCard 
+                key={name}
+                roomData={rooms[name]}
+                isHidden={isHidden}
+            />
+        )
+    });
     if (isLoaded) {
         return(
             <div className="room-list-container">
