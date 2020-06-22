@@ -77,12 +77,12 @@ export function RoomCard(props) {
     if(!isHidden) {
         return (
             <div className="room-card-container">
-                <span>{roomData.building}&nbsp;{roomData.room}</span>
+                <span class="room-card-content rc-header">{roomData.building}&nbsp;{roomData.room}</span>
                 <RoomTimeBar
                     diffList={diffList}
                 />
-                <span>{startTime}</span>
-                <span style={{float: 'right'}}>{minutesToTimeString(endMinutes)}</span>
+                <span class="room-card-content rc-start-time">{startTime}</span>
+                <span class="room-card-content rc-end-time">{minutesToTimeString(endMinutes)}</span>
             </div>
         )
     } else {

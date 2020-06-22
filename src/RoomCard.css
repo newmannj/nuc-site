@@ -1,10 +1,21 @@
 .room-card-container {
     padding-bottom: 20px;
-    padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    height: 40px;
+    height: 65px;
     border: 1px solid black;
     border-radius: 10px;
     margin-bottom: 20px;
+}
+
+.rc-end-time {
+    float: right;
+}
+
+.rc-start-time {
+    float: left;
+}
+
+.room-card-content {
+    padding-top: 10px;
 }
