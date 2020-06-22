@@ -11,6 +11,13 @@ function getMinutesFromTimeString(timeString) {
     return result;
 }
 
+function minutesToTimeString(minutes) {
+    let result = '';
+    let mins = minutes % 60;
+    let hours = Math.floor(minutes / 60);
+    return result.concat(hours).concat(":").concat(mins);
+}
+
 export function RoomCard(props) {
     const roomData = props.roomData;
     const isHidden = props.isHidden;
@@ -61,6 +68,12 @@ export function RoomCard(props) {
             })
         }
     })
+    if(timeRemaining !== 0) {
+        diffList.push({
+            isClass: false,
+            diff: timeRemaining/duration * 100
+        })
+    }
     if(!isHidden) {
         return (
             <div className="room-card-container">
@@ -68,6 +81,8 @@ export function RoomCard(props) {
                 <RoomTimeBar
                     diffList={diffList}
                 />
+                <span>{startTime}</span>
+                <span style={{float: 'right'}}>{minutesToTimeString(endMinutes)}</span>
             </div>
         )
     } else {
