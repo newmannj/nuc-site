@@ -25,7 +25,8 @@ export class Search extends React.Component {
             <div className="search-button-container">
                 <ion-icon
                     id="search-btn" 
-                    name="search"></ion-icon>
+                    name="search"
+                    onClick={this.onSearch}></ion-icon>
             </div>
             <div className="search-input-container">
                 <input 
