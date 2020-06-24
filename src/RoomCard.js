@@ -8,11 +8,15 @@ export function RoomCard(props) {
     const diffList = props.diffList;
     const startTime = props.startTime;
     const endTime = props.endTime;
+    const status = props.status;
     
     if(!isHidden) {
         return (
             <div className="room-card-container">
                 <span className="room-card-content rc-header">{roomData.building}&nbsp;{roomData.room}</span>
+                <ion-icon
+                    class={'status-icon ' + status}
+                    name="square"></ion-icon>
                 <RoomTimeBar diffList={diffList}/>
                 <span className="room-card-content rc-start-time">{startTime}</span>
                 <span className="room-card-content rc-end-time">{endTime}</span>

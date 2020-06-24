@@ -2,6 +2,7 @@
     padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 10px;
     height: 65px;
     border: 1px solid black;
     border-radius: 10px;
@@ -18,4 +19,15 @@
 
 .room-card-content {
     padding-top: 10px;
+}
+
+ion-icon.status-icon {
+    float: right;
+}
+
+.occupied {
+    color: red;
+}
+.vacant {
+    color: green;
 }

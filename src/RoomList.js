@@ -83,6 +83,14 @@ function getDiffList(room, startTime, duration) {
     return diffList;
 }
 
+function getStatus(diffList) {
+    if(diffList[0].isClass !== false) {
+        return "occupied"
+    } else {
+        return "vacant"
+    }
+}
+
 export function RoomList(props) {
     const rooms = props.rooms;
     const startTime = '08:30';
@@ -93,6 +101,7 @@ export function RoomList(props) {
         let isHidden = index > numToDisplay;
         let diffList = getDiffList(rooms[name], startTime, duration);
         let freeTime = getFreeTime(diffList, duration);
+        let status = getStatus(diffList);
         return(
             <RoomCard 
                 key={name}
@@ -103,6 +112,7 @@ export function RoomList(props) {
                 duration={duration}
                 diffList={diffList}
                 freeTime={freeTime}
+                status={status}
             />
         )
     });
