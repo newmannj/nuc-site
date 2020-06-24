@@ -99,6 +99,7 @@ export function RoomList(props) {
                 roomData={rooms[name]}
                 isHidden={isHidden}
                 startTime={startTime}
+                endTime={minutesToTimeString(getMinutesFromTimeString(startTime) + duration)}
                 duration={duration}
                 diffList={diffList}
                 freeTime={freeTime}

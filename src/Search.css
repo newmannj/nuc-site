@@ -37,15 +37,18 @@
 }
 
 .search-button-container:hover {
-    filter: invert(29%) sepia(88%) saturate(2211%) hue-rotate(351deg) brightness(86%) contrast(115%);
     cursor: pointer;
 }
   
 #search-btn {
     padding: 10.5px;
     padding-right: unset;
-    filter: opacity(0.5);
+    color: rgb(112, 111, 111);
     font-size: 20px;
+}
+
+#search-btn:hover {
+    color: #C21626;
 }
   
 .room-search-bar::placeholder {
