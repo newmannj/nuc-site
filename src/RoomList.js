@@ -93,36 +93,49 @@ function getStatus(diffList) {
 
 export function RoomList(props) {
     const rooms = props.rooms;
-    const startTime = '08:30';
+    const startTime = '10:30';
     const duration = 180;
     const isLoaded = props.isLoaded;
     const numToDisplay = props.numToDisplay;
+    const filterString = props.filterString;
     const roomElements = Object.keys(rooms).map((name, index) => {
-        let isHidden = index > numToDisplay;
         let diffList = getDiffList(rooms[name], startTime, duration);
         let freeTime = getFreeTime(diffList, duration);
         let status = getStatus(diffList);
+        let propsObj = {};
+        propsObj.key = name;
+        propsObj.roomData = rooms[name];
+        propsObj.startTime = startTime;
+        propsObj.endTime = minutesToTimeString(getMinutesFromTimeString(startTime) + duration); 
+        propsObj.duration = duration;
+        propsObj.diffList = diffList;
+        propsObj.freeTime = freeTime;
+        propsObj.status = status;
+        return propsObj;
+    });
+    //Sort in order of free time remaining.
+    const sortedEls = roomElements.sort((a, b) => {
+        return b.freeTime - a.freeTime
+    });
+    //Filter sorted results based on filter string.
+    let filteredEls = sortedEls.filter((roomElement) => roomElement.roomData.building.toLowerCase().includes(filterString.toLowerCase()));
+    let itemizedEls = filteredEls.map((propsObj, index) => {
         return(
-            <RoomCard 
-                key={name}
-                roomData={rooms[name]}
-                isHidden={isHidden}
-                startTime={startTime}
-                endTime={minutesToTimeString(getMinutesFromTimeString(startTime) + duration)}
-                duration={duration}
-                diffList={diffList}
-                freeTime={freeTime}
-                status={status}
+            <RoomCard
+                key = {propsObj.key}
+                roomData = {propsObj.roomData}
+                isHidden = {(index > numToDisplay)}
+                diffList = {propsObj.diffList}
+                startTime = {propsObj.startTime}
+                endTime = {propsObj.endTime}
+                status = {propsObj.status}
             />
         )
-    });
-    const sortedEls = roomElements.sort((a, b) => {
-        return b.props.freeTime - a.props.freeTime
-    });
+    })
     if (isLoaded) {
         return(
             <div className="room-list-container">
-                <ul className="room-list">{sortedEls}</ul>
+                <ul className="room-list">{itemizedEls}</ul>
             </div>
         )
     } else {

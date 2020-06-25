@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import { Search } from './Search.js';
+import { Filter } from './Filter.js';
 import { RoomList } from './RoomList.js';
 import NeuLogo from './assets/neu-logo.png'
 
 
 class App extends React.Component {
-    constructor(props) {
+    constructor(props) { 
         super(props);
         this.state = {
             currentRooms: {},
@@ -25,6 +26,7 @@ class App extends React.Component {
                     isLoaded: true,
                     currentRooms: result,
                     numToDisplay: 10,
+                    filterString: "",
                 })
             }
         )
@@ -53,6 +55,8 @@ class App extends React.Component {
         );
     }
 
+    updateFilter = (filterString) => this.setState({ filterString: filterString })
+
     render() {
         return (
             <div>
@@ -64,13 +68,12 @@ class App extends React.Component {
                 <h1>Study Space</h1>
             </div>
             <div className="nuc-container">
-                <Search 
-                    onSearch={this.fetchRooms}
-                />
+                <Filter onUpdate={this.updateFilter}/>
                 <RoomList
                     rooms={this.state.currentRooms}
                     isLoaded={this.state.isLoaded}
                     numToDisplay={this.state.numToDisplay}
+                    filterString={this.state.filterString}
                 />
             </div>
             </div>

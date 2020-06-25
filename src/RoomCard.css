@@ -25,9 +25,10 @@ ion-icon.status-icon {
     float: right;
 }
 
-.occupied {
+.status-icon.occupied {
     color: red;
+    background-color: whitesmoke;
 }
-.vacant {
+.status-icon.vacant {
     color: green;
 }
