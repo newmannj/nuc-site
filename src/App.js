@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { Search } from './Search.js';
 import { Filter } from './Filter.js';
 import { RoomList } from './RoomList.js';
 import NeuLogo from './assets/neu-logo.png'
