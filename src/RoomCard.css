@@ -21,14 +21,28 @@
     padding-top: 10px;
 }
 
-ion-icon.status-icon {
+.room-card-content.rc-header {
+    word-wrap: normal;
+    width: 50%;
+}
+
+div.status-container {
     float: right;
 }
 
-.status-icon.occupied {
-    color: red;
-    background-color: whitesmoke;
+span.status-text {
+    float: left;
 }
-.status-icon.vacant {
+
+.status-icon {
+    padding-top: 5px;
+    padding-left: 10px;
+    background-color: white;
+}
+
+.status-icon.busy {
+    color: red;
+}
+.status-icon.open {
     color: green;
 }
