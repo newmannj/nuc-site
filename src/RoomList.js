@@ -24,10 +24,12 @@ function getDiffList(room, startTime, duration) {
             if (emptyTime > 0) {
                 timeRemaining -= emptyTime;
                 emptyTime = (emptyTime / duration) * 100;
+                if(emptyTime >= 1) {
                 diffList.push({
                     isClass: false,
                     diff: emptyTime
-                })
+                })}
+                
             }
             lastEndTime = classEndMinutes;
             //Calculate the percentage of duration that the class consumes.
@@ -43,10 +45,12 @@ function getDiffList(room, startTime, duration) {
             }
             timeRemaining -= classTime;
             classTime = (classTime / duration) * 100
-            diffList.push({
-                isClass: true,
-                diff: classTime
-            })
+            if(classTime >= 1) {
+                diffList.push({
+                    isClass: true,
+                    diff: classTime
+                })
+            }
         }
     })
     if(timeRemaining !== 0) {
@@ -60,7 +64,7 @@ function getDiffList(room, startTime, duration) {
 
 export function RoomList(props) {
     const rooms = props.rooms;
-    const startTime = '9:29';
+    const startTime = '10:29';
     const duration = 180;
     const isLoaded = props.isLoaded;
     const numToDisplay = props.numToDisplay;
