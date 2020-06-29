@@ -83,7 +83,7 @@ export function RoomList(props) {
         return b.freeTime - a.freeTime
     });
     //Filter sorted results based on filter string.
-    let filteredEls = sortedEls.filter((roomElement) => roomElement.roomData.building.toLowerCase().includes(filterString.toLowerCase()));
+    let filteredEls = sortedEls.filter((roomElement) => roomElement.roomData.building.toLowerCase().startsWith(filterString.toLowerCase()));
     let itemizedEls = filteredEls.map((propsObj, index) => {
         return(
             <RoomCard

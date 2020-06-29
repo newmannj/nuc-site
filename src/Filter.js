@@ -25,7 +25,7 @@ export class Filter extends React.Component {
                     id="filter" 
                     placeholder="Filter results..."
                     onChange={this.handleChange}
-                    onKeyDown={this.handleKeyDown}
+                    onKeyUp={this.handleKeyDown}
                     />
             </div>
             </div>
