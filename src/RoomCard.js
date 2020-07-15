@@ -13,7 +13,7 @@ export function RoomCard(props) {
     if(!isHidden) {
         return (
             <div className="room-card-container">
-                <span className="room-card-content rc-header">{roomData.building}&nbsp;{roomData.room}</span>
+                <span className="room-card-content rc-header">{props.building}&nbsp;{props.room}</span>
                 <div className="status-container">
                     <span className="status-text">{currentlyOpen}</span>
                     <ion-icon

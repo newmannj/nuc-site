@@ -4,18 +4,18 @@ import './RoomList.css';
 const utils = require('./utils.js');
 
 function getDiffList(room, startTime, duration) {
-    const startMinutes = utils.getMinutesFromTimeString(startTime);
+    const startMinutes = utils.minutesFromTimeString(startTime);
     const endMinutes = startMinutes + duration;
     //Sort the list to ease diff list calculations.
     const sortedTimes = room.times.sort((classA, classB) => {
-        return utils.getMinutesFromTimeString(classA.startTime) - utils.getMinutesFromTimeString(classB.startTime);
+        return utils.minutesFromTimeString(classA.startTime) - utils.minutesFromTimeString(classB.startTime);
     })
     const diffList = [];
     let timeRemaining = duration;
     let lastEndTime = startMinutes;
     sortedTimes.forEach((classTime) => {
-        const classStartMinutes = utils.getMinutesFromTimeString(classTime.startTime);
-        const classEndMinutes = utils.getMinutesFromTimeString(classTime.endTime);
+        const classStartMinutes = utils.minutesFromTimeString(classTime.startTime);
+        const classEndMinutes = utils.minutesFromTimeString(classTime.endTime);
         if (classEndMinutes < startMinutes || classStartMinutes > endMinutes) {
             return;
         } else {
@@ -64,8 +64,9 @@ function getDiffList(room, startTime, duration) {
 
 export function RoomList(props) {
     const rooms = props.rooms;
-    const startTime = '10:29';
+    const startTime = '1029';
     const duration = 180;
+    const endTime = utils.minutesToTimeString(utils.minutesFromTimeString(startTime) + duration);
     const isLoaded = props.isLoaded;
     const numToDisplay = props.numToDisplay;
     const filterString = props.filterString;
@@ -74,9 +75,10 @@ export function RoomList(props) {
         let freeTime = utils.getFreeTime(diffList, duration);
         let propsObj = {};
         propsObj.key = name;
-        propsObj.roomData = rooms[name];
+        propsObj.building = rooms[name].building;
+        propsObj.room = rooms[name].room;
         propsObj.startTime = startTime;
-        propsObj.endTime = utils.minutesToTimeString(utils.getMinutesFromTimeString(startTime) + duration); 
+        propsObj.endTime = endTime;
         propsObj.duration = duration;
         propsObj.diffList = diffList;
         propsObj.freeTime = freeTime;
@@ -87,12 +89,13 @@ export function RoomList(props) {
         return b.freeTime - a.freeTime
     });
     //Filter sorted results based on filter string.
-    let filteredEls = sortedEls.filter((roomElement) => roomElement.roomData.building.toLowerCase().startsWith(filterString.toLowerCase()));
-    let itemizedEls = filteredEls.map((propsObj, index) => {
+    //let filteredEls = sortedEls.filter((roomElement) => roomElement.roomData.building.toLowerCase().startsWith(filterString.toLowerCase()));
+    let itemizedEls = sortedEls.map((propsObj, index) => {
         return(
             <RoomCard
                 key = {propsObj.key}
-                roomData = {propsObj.roomData}
+                building = {propsObj.building}
+                room = {propsObj.room}
                 isHidden = {(index > numToDisplay)}
                 diffList = {propsObj.diffList}
                 startTime = {propsObj.startTime}

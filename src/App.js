@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Filter } from './Filter.js';
+import { Search } from './Search.js';
 import { RoomList } from './RoomList.js';
 import NeuLogo from './assets/neu-logo.png'
 
@@ -67,7 +67,7 @@ class App extends React.Component {
                 <h1>Study Space</h1>
             </div>
             <div className="nuc-container">
-                <Filter onUpdate={this.updateFilter}/>
+                <Search onSearch={this.fetchRooms}/>
                 <RoomList
                     rooms={this.state.currentRooms}
                     isLoaded={this.state.isLoaded}
