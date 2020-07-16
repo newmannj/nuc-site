@@ -85,6 +85,7 @@ export function RoomList(props) {
         propsObj.duration = duration;
         propsObj.diffList = diffList;
         propsObj.freeTime = freeTime;
+        propsObj.conflictsDetected = freeTime < 0;
         return propsObj;
     });
     //Sort in order of free time remaining.
@@ -93,17 +94,18 @@ export function RoomList(props) {
     });
     //Filter sorted results based on filter string.
     let itemizedEls = sortedEls.map((propsObj, index) => {
-        return(
-            <RoomCard
-                key = {propsObj.key}
-                building = {propsObj.building}
-                room = {propsObj.room}
-                isHidden = {(index > numToDisplay)}
-                diffList = {propsObj.diffList}
-                startTime = {propsObj.startTime}
-                endTime = {propsObj.endTime}
-            />
-        )
+            return(
+                <RoomCard
+                    key = {propsObj.key}
+                    building = {propsObj.building}
+                    room = {propsObj.room}
+                    isHidden = {(index > numToDisplay)}
+                    diffList = {propsObj.diffList}
+                    startTime = {propsObj.startTime}
+                    endTime = {propsObj.endTime}
+                    conflictsDetected = {propsObj.conflictsDetected}
+                />
+            )
     })
     if (isLoaded) {
         return(

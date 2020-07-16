@@ -1,6 +1,7 @@
 import React from 'react';
 import './RoomCard.css';
 import { RoomTimeBar } from './RoomTimeBar.js';
+const utils = require('./utils.js');
 
 export function RoomCard(props) {
     const isHidden = props.isHidden;
@@ -10,8 +11,9 @@ export function RoomCard(props) {
     const currentlyOpen = diffList[0].isClass ? "Busy" : "Open";
     const building = props.building;
     const room = props.room;
+    const conflictsDetected = props.conflictsDetected;
     
-    if(!isHidden) {
+    if(!isHidden && !conflictsDetected) {
         return (
             <div className="room-card-container">
                 <span className="room-card-content rc-header">{building}&nbsp;{room}</span>
@@ -22,8 +24,8 @@ export function RoomCard(props) {
                         name="square"></ion-icon>
                 </div>
                 <RoomTimeBar diffList={diffList}/>
-                <span className="room-card-content rc-start-time">{startTime}</span>
-                <span className="room-card-content rc-end-time">{endTime}</span>
+                <span className="room-card-content rc-start-time">{utils.toTwelveTimestring(startTime)}</span>
+                <span className="room-card-content rc-end-time">{utils.toTwelveTimestring(endTime)}</span>
             </div>
         )
     } else {

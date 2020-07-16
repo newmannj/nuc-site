@@ -32,10 +32,11 @@ export const minutesToTimeString = (minutes) => {
  */
 export const toTwelveTimestring = (timeString) => {
     let hours = timeString.substring(0, 2);
+    let endPadding = hours < 12 ? " AM" : " PM";
     hours = hours % 12;
+    if(hours === 0) hours = 12;
     let mins = timeString.substring(2);
     let result = '';
-    let endPadding = hours < 12 ? " AM" : " PM";
     return result.concat(hours).concat(':').concat(mins).concat(endPadding);
 }
 
