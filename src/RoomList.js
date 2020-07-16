@@ -16,7 +16,7 @@ function getDiffList(room, startTime, duration) {
     sortedTimes.forEach((classTime) => {
         const classStartMinutes = utils.minutesFromTimeString(classTime.startTime);
         const classEndMinutes = utils.minutesFromTimeString(classTime.endTime);
-        if (classEndMinutes < startMinutes || classStartMinutes > endMinutes) {
+        if (classEndMinutes < startMinutes || classStartMinutes > endMinutes || lastEndTime === classEndMinutes) {
             return;
         } else {
             //Add empty space between the last class and this one.
@@ -32,23 +32,27 @@ function getDiffList(room, startTime, duration) {
                 
             }
             lastEndTime = classEndMinutes;
-            //Calculate the percentage of duration that the class consumes.
-            let classTime;
+            //Calculate the amount of time that the class consumes within the viewing window.
+            let classTimeInDuration;
             if (classStartMinutes <= startMinutes && classEndMinutes >= endMinutes) {
-                classTime = (endMinutes - startMinutes);
+                classTimeInDuration = (endMinutes - startMinutes);
             } else if (classStartMinutes < startMinutes) {
-                classTime = (classEndMinutes - startMinutes);
+                classTimeInDuration = (classEndMinutes - startMinutes);
             } else if (classEndMinutes > endMinutes) {
-                classTime = (endMinutes - classStartMinutes);
+                classTimeInDuration = (endMinutes - classStartMinutes);
             } else {
-                classTime = (classEndMinutes - classStartMinutes);
+                classTimeInDuration = (classEndMinutes - classStartMinutes);
             }
-            timeRemaining -= classTime;
-            classTime = (classTime / duration) * 100
-            if(classTime >= 1) {
+            timeRemaining -= classTimeInDuration;
+            let classTimePercentage = (classTimeInDuration / duration) * 100
+            //Issues with divs not being able to take up small spaces, so for now
+            //don't display.
+            if(classTimePercentage >= 1) {
                 diffList.push({
                     isClass: true,
-                    diff: classTime
+                    diff: classTimePercentage,
+                    startTime: classTime.startTime,
+                    endTime: classTime.endTime
                 })
             }
         }
@@ -69,7 +73,6 @@ export function RoomList(props) {
     const endTime = utils.minutesToTimeString(utils.minutesFromTimeString(startTime) + duration);
     const isLoaded = props.isLoaded;
     const numToDisplay = props.numToDisplay;
-    const filterString = props.filterString;
     const roomElements = Object.keys(rooms).map((name, index) => {
         let diffList = getDiffList(rooms[name], startTime, duration);
         let freeTime = utils.getFreeTime(diffList, duration);
@@ -89,7 +92,6 @@ export function RoomList(props) {
         return b.freeTime - a.freeTime
     });
     //Filter sorted results based on filter string.
-    //let filteredEls = sortedEls.filter((roomElement) => roomElement.roomData.building.toLowerCase().startsWith(filterString.toLowerCase()));
     let itemizedEls = sortedEls.map((propsObj, index) => {
         return(
             <RoomCard

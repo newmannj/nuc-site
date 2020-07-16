@@ -17,13 +17,26 @@ export const minutesFromTimeString = (timeString) => {
  * @return {string} Time string (24h format)
  */
 export const minutesToTimeString = (minutes) => {
-    console.log(minutes)
     let result = '';
     let mins = minutes % 60;
     let hours = Math.floor(minutes / 60);
     let hourPadded = hours < 10 ? "0".concat(hours) : hours;
     let minPadded = mins < 10 ? "0".concat(mins) : mins;
     return result.concat(hourPadded).concat(minPadded);
+}
+
+/**
+ * Converts 24 hour time string to 12 hour time string. 
+ * @param {string} timeString - Timestring to convert
+ * @return {string} Time string format HH:MM AM
+ */
+export const toTwelveTimestring = (timeString) => {
+    let hours = timeString.substring(0, 2);
+    hours = hours % 12;
+    let mins = timeString.substring(2);
+    let result = '';
+    let endPadding = hours < 12 ? " AM" : " PM";
+    return result.concat(hours).concat(':').concat(mins).concat(endPadding);
 }
 
 /**

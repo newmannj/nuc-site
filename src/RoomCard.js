@@ -3,17 +3,18 @@ import './RoomCard.css';
 import { RoomTimeBar } from './RoomTimeBar.js';
 
 export function RoomCard(props) {
-    const roomData = props.roomData;
     const isHidden = props.isHidden;
     const diffList = props.diffList;
     const startTime = props.startTime;
     const endTime = props.endTime;
     const currentlyOpen = diffList[0].isClass ? "Busy" : "Open";
+    const building = props.building;
+    const room = props.room;
     
     if(!isHidden) {
         return (
             <div className="room-card-container">
-                <span className="room-card-content rc-header">{props.building}&nbsp;{props.room}</span>
+                <span className="room-card-content rc-header">{building}&nbsp;{room}</span>
                 <div className="status-container">
                     <span className="status-text">{currentlyOpen}</span>
                     <ion-icon
