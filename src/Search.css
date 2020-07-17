@@ -17,19 +17,35 @@
     font-size: 40pt;
     width: 100%;
     width: inherit;
-    position: relative;
-    top: 1px;
-    height: 37px;
+    top:8px;
+    position:relative;
     padding-left: 10px;
     border: none;
     outline: none;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .search-input-container {
     float: left;
     width: 90%;
 }
+@media only screen and (max-width: 800px) {
+    .search-input-container {
+        width: 80%;
+    }
+    #search {
+        top: 4px;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .search-input-container{
+        width: 80%;
+    }
+    #search {
+        top: 4px;
+    }
+  }
   
 .search-button-container {
     float: left;

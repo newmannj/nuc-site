@@ -3,6 +3,15 @@ import './RoomCard.css';
 import { RoomTimeBar } from './RoomTimeBar.js';
 const utils = require('./utils.js');
 
+const shortName = (buildingname) => {
+    if(buildingname.includes("Behrakis")) {
+        return "Behrakis";
+    } else if(buildingname.includes("Science")) {
+        return "ISEC";
+    }
+    return buildingname;
+}
+
 export function RoomCard(props) {
     const isHidden = props.isHidden;
     const diffList = props.diffList;
@@ -16,7 +25,8 @@ export function RoomCard(props) {
     if(!isHidden && !conflictsDetected) {
         return (
             <div className="room-card-container">
-                <span className="room-card-content rc-header">{building}&nbsp;{room}</span>
+                <span className="room-card-content rc-header-long">{building}&nbsp;{room}</span>
+                <span className="room-card-content rc-header-short">{shortName(building)}&nbsp;{room}</span>
                 <div className="status-container">
                     <span className="status-text">{currentlyOpen}</span>
                     <ion-icon

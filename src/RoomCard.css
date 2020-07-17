@@ -21,10 +21,34 @@
     padding-top: 10px;
 }
 
-.room-card-content.rc-header {
+.room-card-content.rc-header-long {
     word-wrap: normal;
     width: 50%;
 }
+
+.room-card-content.rc-header-short {
+    display: none;
+    word-wrap: normal;
+    width: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+    .room-card-content.rc-header-long {
+        display: none;
+    }
+
+    .room-card-content.rc-header-short {
+        display: inline;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .room-card-content.rc-header-long {
+        display: none;
+    }
+    .room-card-content.rc-header-short {
+        display: inline;
+    }
+  }
 
 div.status-container {
     float: right;
