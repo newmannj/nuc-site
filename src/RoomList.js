@@ -68,7 +68,10 @@ function getDiffList(room, startTime, duration) {
 
 export function RoomList(props) {
     const rooms = props.rooms;
-    const startTime = '1029';
+    let d = new Date();
+    let hours = d.getHours();
+    let minutes = d.getMinutes();
+    const startTime = utils.minutesToTimeString((hours*60) + minutes);
     const duration = 180;
     const endTime = utils.minutesToTimeString(utils.minutesFromTimeString(startTime) + duration);
     const isLoaded = props.isLoaded;

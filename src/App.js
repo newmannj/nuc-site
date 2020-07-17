@@ -17,7 +17,9 @@ class App extends React.Component {
 
     /** Fetch initial list of rooms. */
     componentDidMount() {
-        fetch("http://localhost:8000/api/classrooms?day=1")
+        let d = new Date();
+        let curDay = d.getDay();
+        fetch("http://localhost:8000/api/classrooms?day=" + curDay)
         .then(res => res.json())
         .then(
             (result) => {
@@ -41,7 +43,9 @@ class App extends React.Component {
     }
 
     fetchRooms = (building) => {
-        fetch("http://localhost:8000/api/building?day=1&building="+building)
+        let d = new Date();
+        let curDay = d.getDay();
+        fetch("http://localhost:8000/api/building?day="+curDay+"&building="+building)
         .then(res => res.json())
         .then(
             (result) => {
