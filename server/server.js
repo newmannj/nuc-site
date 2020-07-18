@@ -1,14 +1,15 @@
 var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
 var bodyParser = require('body-parser');
+const env = require('./env');
 
-let url = "mongodb://nuc-classrooms-db:MCCjJ5gj5JqDgwKQprbB5YmefM12rtcAdnG5OR8m58kVKaTDsoDDfBVQ4LAG10nYYJ1OyVtcL0xRWueUd9BSLA==@nuc-classrooms-db.mongo.cosmos.azure.com:10255/?ssl=true&appName=@nuc-classrooms-db@";
+let url = `mongodb://${env.dbName}:${env.dbKey}@${env.dbName}.mongo.cosmos.azure.com:${env.dbPort}/?ssl=true&appName=@${env.dbName}@`;
 const client = new MongoClient(url);
 
 var app = express();
 app.use(bodyParser.json({limit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static('../build'))
+app.use(express.static('../client/build'))
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -93,7 +94,7 @@ app.route('/api/building').get( function(req, res) {
 })
 
 app.get('/*', (req, res) => {
-    res.sendFile('index.html', {root: __dirname + '../build/'});
+    res.sendFile('index.html', {root: __dirname + '../client/build/'});
 })
 
 /**
