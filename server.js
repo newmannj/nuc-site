@@ -9,7 +9,7 @@ const client = new MongoClient(url);
 var app = express();
 app.use(bodyParser.json({limit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static('../client/build'))
+app.use(express.static('./client/build'))
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -94,7 +94,7 @@ app.route('/api/building').get( function(req, res) {
 })
 
 app.get('/*', (req, res) => {
-    res.sendFile('index.html', {root: __dirname + '../client/build/'});
+    res.sendFile('index.html', {root: __dirname + './client/build/'});
 })
 
 /**

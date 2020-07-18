@@ -1,7 +1,17 @@
 {
-    "name": "nuc-combined",
-    "scripts": {
-        "start":"cd server && npm run start"
-    }
-
+  "name": "nuc-server",
+  "version": "1.0.0",
+  "description": "server for nuc-site",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ./client && npm run build && cd ../ && node server.js",
+    "dev": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9"
+  }
 }
