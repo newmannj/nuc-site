@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/f53ae77a-57d5-4f9c-a0f4-357aba0c1288/resourceGroups/nuc-classrooms/providers/Microsoft.Web/sites/nuc-classrooms-site",
+    "appService.deploySubpath": "."
+}

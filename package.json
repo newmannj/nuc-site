@@ -1,0 +1,7 @@
+{
+    "name": "nuc-combined",
+    "scripts": {
+        "start":"cd server && npm run start"
+    }
+
+}
