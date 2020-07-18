@@ -1,14 +1,15 @@
 var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
 var bodyParser = require('body-parser');
-const env = require('/env');
+const env = require('./env');
+
 let url = `mongodb://${env.dbName}:${env.dbKey}@${env.dbName}.mongo.cosmos.azure.com:${env.dbPort}/?ssl=true&appName=@${env.dbName}@`;
 const client = new MongoClient(url);
 
 var app = express();
 app.use(bodyParser.json({limit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static('..client/build'))
+app.use(express.static('../client/build'))
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
