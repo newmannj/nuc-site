@@ -2,7 +2,6 @@ var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
 var bodyParser = require('body-parser');
 
-let url = "mongodb://nuc-classrooms-db:MCCjJ5gj5JqDgwKQprbB5YmefM12rtcAdnG5OR8m58kVKaTDsoDDfBVQ4LAG10nYYJ1OyVtcL0xRWueUd9BSLA==@nuc-classrooms-db.mongo.cosmos.azure.com:10255/?ssl=true&appName=@nuc-classrooms-db@";
 const client = new MongoClient(url);
 
 var app = express();
