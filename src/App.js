@@ -19,7 +19,7 @@ class App extends React.Component {
     componentDidMount() {
         let d = new Date();
         let curDay = d.getDay();
-        fetch("http://localhost:8000/api/classrooms?day=" + curDay)
+        fetch("/api/classrooms?day=" + curDay)
         .then(res => res.json())
         .then(
             (result) => {
@@ -45,7 +45,7 @@ class App extends React.Component {
     fetchRooms = (building) => {
         let d = new Date();
         let curDay = d.getDay();
-        fetch("http://localhost:8000/api/building?day="+curDay+"&building="+building)
+        fetch("/api/building?day="+curDay+"&building="+building)
         .then(res => res.json())
         .then(
             (result) => {

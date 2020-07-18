@@ -1,0 +1,13 @@
+{
+  "name": "nuc-server",
+  "version": "1.0.0",
+  "description": "server for nuc-site",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ../ && npm run build && cd server && node server.js",
+    "dev": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
