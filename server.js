@@ -24,8 +24,8 @@ app.use(function (req, res, next) {
 /**
  * For some reason nginx doesn't like port 8000??
  */
-app.listen(8080, ()=> {
-    console.log("Listening on port 8080!");
+app.listen(1337, ()=> {
+    console.log("Listening on port 1337y!");
 })
 
 /**
@@ -96,7 +96,8 @@ app.route('/api/building').get( function(req, res) {
 })
 
 app.get('/*', (req, res) => {
-    res.sendFile('index.html', {root: __dirname + './client/'});
+    res.send("Hello world! Skrrt");
+    //res.sendFile('index.html', {root: __dirname + './client/'});
 })
 
 /**
