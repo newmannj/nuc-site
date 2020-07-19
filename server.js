@@ -24,8 +24,8 @@ app.use(function (req, res, next) {
 /**
  * For some reason nginx doesn't like port 8000??
  */
-app.listen(3001, ()=> {
-    console.log("Listening on port 3001!");
+app.listen(8080, ()=> {
+    console.log("Listening on port 8080!");
 })
 
 /**
