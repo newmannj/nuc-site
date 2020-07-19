@@ -1,15 +1,17 @@
 var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
 var bodyParser = require('body-parser');
-const env = require('./env');
+require('dotenv').config();
+const { DB_NAME, DB_KEY, DB_PORT } = process.env;
+console.log("using" + DB_NAME);
 
-let url = `mongodb://${env.dbName}:${env.dbKey}@${env.dbName}.mongo.cosmos.azure.com:${env.dbPort}/?ssl=true&appName=@${env.dbName}@`;
+let url = `mongodb://${DB_NAME}:${DB_KEY}@${DB_NAME}.mongo.cosmos.azure.com:${DB_PORT}/?ssl=true&appName=@${DB_NAME}@`;
 const client = new MongoClient(url);
 
 var app = express();
 app.use(bodyParser.json({limit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static('./client/build'))
+app.use(express.static('./client/build/'))
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -94,7 +96,7 @@ app.route('/api/building').get( function(req, res) {
 })
 
 app.get('/*', (req, res) => {
-    res.sendFile('index.html', {root: __dirname + './client/build/'});
+    res.sendFile('index.html', {root: __dirname + './client/'});
 })
 
 /**
