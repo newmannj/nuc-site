@@ -13,7 +13,7 @@ const client = new MongoClient(url);
 
 let app = express();
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
     res.send("Hello world! Skrrt");
     //res.sendFile('index.html', {root: __dirname + './client/'});
 })

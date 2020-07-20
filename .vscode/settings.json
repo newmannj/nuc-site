@@ -3,6 +3,5 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.deploySubpath": ".",
-    "appService.defaultWebAppToDeploy": "/subscriptions/f53ae77a-57d5-4f9c-a0f4-357aba0c1288/resourceGroups/nuc-classrooms/providers/Microsoft.Web/sites/studyspace"
+    "appService.deploySubpath": "."
 }
