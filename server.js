@@ -1,6 +1,6 @@
 
 //var MongoClient = require('mongodb').MongoClient;
-var express = require('express');
+var http = require('http');
 //var bodyParser = require('body-parser');
 /*
 require('dotenv').config();
@@ -11,16 +11,16 @@ let url = `mongodb://${DB_NAME}:${DB_KEY}@${DB_NAME}.mongo.cosmos.azure.com:${DB
 const client = new MongoClient(url);
 */
 
-let app = express();
-
-app.get('/', (req, res) => {
-    res.send("Hello world! Skrrt");
-    //res.sendFile('index.html', {root: __dirname + './client/'});
+const server = http.createServer((request, response) => {
+    response.writeHead(200, {"Content-Type":"text/plain"});
+    response.end("Hello world skeeert");
 })
 
-app.listen(3000, ()=>{
-    console.log("Listening on port 3000!");
-})
+const port = process.env.PORT || 3000;
+server.listen(port);
+
+console.log("Server running!");
+
 
 // var app = express();
 // app.use(bodyParser.json({limit:'5mb'}));
