@@ -1,16 +1,19 @@
 {
-  "name": "nuc-server",
-  "version": "1.0.1",
-  "description": "server for nuc-site",
+  "name": "test-azure",
+  "version": "1.0.0",
+  "description": "",
   "main": "server.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "cd client && npm run build && cd ../ && npm install && node server.js"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "license": "ISC"
 }
