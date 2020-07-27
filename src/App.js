@@ -11,7 +11,8 @@ class App extends React.Component {
         this.state = {
             currentRooms: {},
             isLoaded: false,
-            numToDisplay: 0
+            numToDisplay: 0,
+            badRequest: false
         }
     }
 
@@ -25,9 +26,10 @@ class App extends React.Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    currentRooms: result,
+                    currentRooms: result['rooms'],
                     numToDisplay: 10,
                     filterString: "",
+                    
                 })
             }
         )
@@ -49,11 +51,18 @@ class App extends React.Component {
         .then(res => res.json())
         .then(
             (result) => {
-                this.setState({ 
-                    isLoaded: true, 
-                    currentRooms: result, 
-                    numToDisplay: 10 
-                })
+                if(result['roomCount'] === 0) {
+                    this.setState({
+                        badRequest: true
+                    })
+                } else {
+                    this.setState({ 
+                        isLoaded: true, 
+                        currentRooms: result['rooms'], 
+                        numToDisplay: 10,
+                        badRequest: false
+                    })
+                }
             }
         );
     }
@@ -69,7 +78,9 @@ class App extends React.Component {
                 <h1>Study Space</h1>
             </div>
             <div className="nuc-container">
-                <Search onSearch={this.fetchRooms}/>
+                <Search 
+                    onSearch={this.fetchRooms}
+                    badRequest={this.state.badRequest}/>
                 <RoomList
                     rooms={this.state.currentRooms}
                     isLoaded={this.state.isLoaded}

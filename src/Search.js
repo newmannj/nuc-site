@@ -6,6 +6,7 @@ export class Search extends React.Component {
         super(props);
         this.state = {
             query: '',
+            badRequest: props.badRequest
         }
     }
     
@@ -21,21 +22,21 @@ export class Search extends React.Component {
 
     render() {
         return(
-            <div className="search-container">
-            <div className="search-button-container">
-                <ion-icon
-                    id="search-btn" 
-                    name="search"
-                    onClick={this.onSearch}></ion-icon>
-            </div>
-            <div className="search-input-container">
-                <input 
-                    id="search" 
-                    placeholder="Search for a building"
-                    onChange={this.handleChange}
-                    onKeyDown={this.handleKeyDown}
-                    />
-            </div>
+            <div className={"search-container" + (this.props.badRequest ? " search-error" : "")}>
+                <div className="search-button-container">
+                    <ion-icon
+                        id="search-btn" 
+                        name="search"
+                        onClick={this.onSearch}></ion-icon>
+                </div>
+                <div className="search-input-container">
+                    <input 
+                        id="search" 
+                        placeholder="Search for a building"
+                        onChange={this.handleChange}
+                        onKeyDown={this.handleKeyDown}
+                        />
+                </div>
             </div>
         )
     }

@@ -6,6 +6,12 @@
     border: 1px #dbdbdb solid;
 }
 
+.search-error,
+.search-error:hover {
+    box-shadow: 0px 0px 3px 1.5px #C21626!important;
+}
+
+
 .search-container:hover,
 .search-container::selection {
     box-shadow: 0px 0px 3px 1.5px #c4c4c4;
