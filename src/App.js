@@ -58,8 +58,6 @@ class App extends React.Component {
         );
     }
 
-    updateFilter = (filterString) => this.setState({ filterString: filterString })
-
     render() {
         return (
             <div>
@@ -76,7 +74,6 @@ class App extends React.Component {
                     rooms={this.state.currentRooms}
                     isLoaded={this.state.isLoaded}
                     numToDisplay={this.state.numToDisplay}
-                    filterString={this.state.filterString}
                 />
             </div>
             </div>

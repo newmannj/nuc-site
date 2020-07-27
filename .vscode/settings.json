@@ -1,0 +1,9 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "files.exclude": {
+        "**/node_modules": true
+    }
+}
