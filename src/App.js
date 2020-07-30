@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Search } from './Search.js';
 import { RoomList } from './RoomList.js';
+import { Footer } from './Footer';
 import NeuLogo from './assets/neu-logo.png'
 
 
@@ -87,6 +88,7 @@ class App extends React.Component {
                     numToDisplay={this.state.numToDisplay}
                 />
             </div>
+            <Footer/>
             </div>
         );
     }
