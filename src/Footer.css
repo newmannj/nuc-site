@@ -3,4 +3,6 @@
     text-align: center;
     background-color: lightgray;
     padding-top: 1rem;
+    position: fixed;
+    bottom: 0;
 }
