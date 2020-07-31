@@ -3,6 +3,8 @@
     text-align: center;
     background-color: lightgray;
     padding-top: 1rem;
-    position: fixed;
     bottom: 0;
+    width: 100%;
+    position: absolute;
+    padding-top: 1em;
 }

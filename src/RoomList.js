@@ -118,8 +118,8 @@ export function RoomList(props) {
         )
     } else {
         return (
-            <div>
-                <h2>Loading...</h2>
+            <div className="room-list-loading">
+                <h2>Fetching classrooms...</h2>
             </div>
         );
     }

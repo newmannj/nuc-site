@@ -1,38 +1,27 @@
-.nuc-container {
-    width: 60%;
-    margin: auto;
-    
+#page-container {
+  position: relative;
+  min-height: 100vh;
 }
 
-h1 {
-    color: #C21626;
-    font-style: bold;
-    font-family: "Arial";
-    text-align: center;
+.nuc-container {
+    padding-bottom: 4em;
+    width: 60%;
+    margin: auto;
+}
+  
+@media only screen and (max-width: 800px) {
+  .nuc-container {
+    width: 70%;
   }
+}
 
-.school-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 5%;
-    padding-top: 25px;
+@media only screen and (max-width: 600px) {
+  .nuc-container {
+    width: 80%;
   }
-  
-  @media only screen and (max-width: 800px) {
-    .school-logo {
-      width: 10%;
-    }
-    .nuc-container {
-      width: 70%;
-    }
-  }
-  
-  @media only screen and (max-width: 600px) {
-    .school-logo {
-      width: 12%;
-    }
-    .nuc-container {
-      width: 80%;
-    }
+}
+
+
+ #root {
+   font-family: "Mulish";
   }

@@ -3,3 +3,7 @@
     padding-top: 20px;
     margin: 0px 0px;
 }
+
+.room-list-loading {
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+div.nuc-header {
+    padding: 1em 0;
+    display: inline-flex;
+}
+
+div.nuc-header h1 {
+    font-style: bold;
+    margin: 0;
+    color: #C21626;
+}
+
+div.nuc-header-links {
+    align-self: right;
+    width: auto;
+}
+
+div.nuc-header h2{
+    margin: 0;
+    padding-left: 2em;
+    color: rgb(136, 127, 127);
+    float:right;
+}

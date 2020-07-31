@@ -3,6 +3,7 @@ import './App.css';
 import { Search } from './Search.js';
 import { RoomList } from './RoomList.js';
 import { Footer } from './Footer';
+import { Header } from './Header';
 import NeuLogo from './assets/neu-logo.png'
 
 
@@ -70,25 +71,19 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-            <div className="nuc-header">
-                <img
-                    src={NeuLogo}
-                    className="school-logo"
-                    alt="Northeastern Logo"></img>
-                <h1>Study Space</h1>
-            </div>
-            <div className="nuc-container">
-                <Search 
-                    onSearch={this.fetchRooms}
-                    badRequest={this.state.badRequest}/>
-                <RoomList
-                    rooms={this.state.currentRooms}
-                    isLoaded={this.state.isLoaded}
-                    numToDisplay={this.state.numToDisplay}
-                />
-            </div>
-            <Footer/>
+            <div id="page-container">
+                <div className="nuc-container">
+                    <Header></Header>
+                    <Search 
+                        onSearch={this.fetchRooms}
+                        badRequest={this.state.badRequest}/>
+                    <RoomList
+                        rooms={this.state.currentRooms}
+                        isLoaded={this.state.isLoaded}
+                        numToDisplay={this.state.numToDisplay}
+                    />
+                </div>
+                <Footer/>
             </div>
         );
     }

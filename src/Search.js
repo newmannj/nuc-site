@@ -32,7 +32,7 @@ export class Search extends React.Component {
                 <div className="search-input-container">
                     <input 
                         id="search" 
-                        placeholder="Search for a building"
+                        placeholder="Search for a building, i.e. 'Ryder'"
                         onChange={this.handleChange}
                         onKeyDown={this.handleKeyDown}
                         />
